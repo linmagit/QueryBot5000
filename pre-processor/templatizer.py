@@ -1,3 +1,5 @@
+#!/usr/bin/env python3.5
+
 import sys
 import glob
 import collections
@@ -226,7 +228,7 @@ def ProcessAnonymizedLogs(input_dir, output_dir, max_log, config):
 # main
 # ==============================================
 if __name__ == '__main__':
-    aparser = argparse.ArgumentParser(description='Templatize Timeseries')
+    aparser = argparse.ArgumentParser(description='Templatize SQL Queries')
     aparser.add_argument('project', choices=PROJECTS.keys(), help='Data source type')
     aparser.add_argument('--dir', help='Input Data Directory')
     aparser.add_argument('--output', help='Output data directory')

@@ -1,4 +1,4 @@
-
+#!/usr/bin/env python3.5
 
 import importlib
 import torch
@@ -25,15 +25,11 @@ from datetime import datetime, timedelta
 from sortedcontainers import SortedDict
 
 import Utilities
-from Corpus import Corpus
 
 from spectral import Two_Stage_Regression
 
 from models import FNN_Model
 from models import RNN_Model
-from models import PSRNN_Nonlinear_Model
-from models import PSRNN_Factorized_Model 
-from models import PSRNN_Nonlinear_Model_backup
 from models import PSRNN_Model
 
 # ==============================================
@@ -69,7 +65,7 @@ PROJECTS = {
         "input_dir": "../data/online-oli-clusters",
         "cluster_path": "../data/cluster-coverage/oli-coverage.pickle",
         "output_dir":
-        #"../result/online-prediction/online-oli-clusters-prediction",
+        "../result/online-prediction/online-oli-clusters-prediction",
     },
     "noise": {
         "name": "noise",

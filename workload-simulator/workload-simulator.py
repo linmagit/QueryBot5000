@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import sys
 import psycopg2
 import mysql.connector
@@ -22,7 +24,7 @@ from tqdm import tqdm
 # Import Simulator
 sys.path.append("../planner-simulator")
 #from simulation import Simulator
-from online_simulation import Simulator
+from planner_simulator import Simulator
 
 '''
 Database Simulator and Trace Replayer
