@@ -28,13 +28,23 @@ from planner_simulator import Simulator
 
 '''
 Database Simulator and Trace Replayer
-This is a database simulator currently only supporting MySQL. The simulator is
-run from the command line ("python3 db-generator.py -h" for usability). If the
+This is a database simulator that supports MySQL and PostgreSQL. The simulator is
+run from the command line ("python3 workload-simulator.py -h" for usability). If the
 database that the user specifies does not exist, then the generator can generate
-it with a provided schema, and fill it with some fake data (see --rows). After,
-it replays a trace provided by the user. To assure that the traces from the
-queries actually execute and return data, the simulator will insert data from
-the queries themselves prior to executing the queries.
+it with a provided schema, and fill it with some fake data (see --rows). It
+removes all the secondary indexes in the database, and only keeps the primary
+indexes. After, it replays a trace provided by the user. At each fixed interval,
+it creates a new index based on an index suggestion algorithm with the
+forecasting result at that time.
+There are three alternative modes used for comparison in the experiments:
+    (1) create all the indexes before query replay (see STATIC_SUGGEST);
+    (2) use the EXPLAIN SQL command to analyze how many queries are using
+    indexes instead of actually executing the queries (see EXPLAIN);
+    (3) use the clustering result with logical features instead of arrival rate
+    features (see LOGICAL).
+If one wants to assure that the traces from the queries actually execute and
+return data, the simulator can insert data from the queries themselves prior to
+executing the queries.
 '''
 
 #########################
@@ -1096,6 +1106,7 @@ def runTrace(config, dbconfig, cnx, cursor):
                     if STATIC_SUGGEST is False:
                         continue
 
+                # Create at most 20 indexes
                 if STATIC_SUGGEST and index_cnt >= 20:
                     config["index_duration"] = 1000000
 
