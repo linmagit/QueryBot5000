@@ -18,10 +18,15 @@ This component extracts the **template**s from the anonymized queries and record
     ./templatizer.py --help
     
 ### Clusterer
+This component groups query templates with similar arrival rate patterns into **cluster**s.
+
     cd clusterer
     ./online_clustering.py --help
+_generate-cluster-coverage.py_ generates the time series for the largest _MAX_CLUSTER_NUM_ clusters on each day, which are used in the forecasting evaluation.
     
 ### Forecaster
+This component uses a combination of linear regression, recurrent neural network, and kernel regression to predict the arrival rate pattern of each query cluster on different prediction **horizon**s and **interval**s.
+
     cd forecaster
     ./exp_multi_online_continuous.py --help
  
