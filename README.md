@@ -31,6 +31,8 @@ This component uses a combination of linear regression, recurrent neural network
     ./exp_multi_online_continuous.py --help
  
 ### Workload Simulator
+This simulator populates a synthetic database with a given schema file, removes all the secondary indexes, replays the query trace of the workload, and builds appropriate indexes with the real-time workload forecasting results.
+
     cd workload-simulator
     ./workload-simulator.py --help
     
