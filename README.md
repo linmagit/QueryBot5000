@@ -6,10 +6,14 @@ in the future based on historical data. This is the source code for our
 ## Framework Pipeline:
 
 ### Anonymization
+We first anonymize all the queries from the real-world traces used in our experiments for privacy purposes. The components below use the anonymization results from this step as their input.
+
     cd anonymizer
     ./log-anonymizer.py --help
     
 ### Pre-processor
+This component extracts the **template**s from the anonymized queries and records the arrival rate history for each template.
+
     cd pre-processor
     ./templatizer.py --help
     
