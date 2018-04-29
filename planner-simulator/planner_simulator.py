@@ -16,9 +16,17 @@ from sortedcontainers import SortedDict
 
 from schemaParser import extract_tables_and_columns
 
-# Indicate whether we're in the testing mode on a small portion of the dataset
-
 class Simulator:
+    """Index suggestion algorithm that simulates a basic "what-if" API
+
+    We recommend indexes based on the workload forecasting results at the
+    current time stamp. We only recommend single-column indexes here.
+    The expected arrival rate of each query template is calculated by the
+    predicted arrival rate of the cluster it belongs to and the ratio between
+    the volume of this template and the total volume of the cluster.
+    The benefit of the index is estimated also by the cardinality of the column
+    and whether the query can already use another index.
+    """
     def __init__(self, schema_file, original_path, predicted_path, assignment_path,
             top_cluster_path, max_cluster_num, aggregate, column_card, static_suggest):
         # params
