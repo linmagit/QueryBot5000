@@ -27,18 +27,20 @@ from sklearn.neighbors import NearestNeighbors
 csv.field_size_limit(sys.maxsize)
 
 
+# Only looks at the csv files for the first 10 templates for testing purpose
+TESTING = False
+
+# Whether use the KNN module from sklearn to accelerate finding the closest center
+USE_KNN = True
+# Which high-dimentional indexing algorithm to use
+KNN_ALG = "kd_tree"
+
+
 OUTPUT_DIR = 'online-clustering-admission-noise/'
-
-YLABEL = r"# Queries / min"
 STATEMENTS = ['select', 'SELECT', 'INSERT', 'insert', 'UPDATE', 'update', 'delete', 'DELETE']
-
 # "2016-10-31","17:50:21.344030"
 DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S" # Strip milliseconds ".%f"
 
-TESTING = False
-
-USE_KNN = True
-KNN_ALG = "kd_tree"
 
 def LoadData(input_path):
     total_queries = dict()
@@ -101,7 +103,6 @@ def Similarity(x, y, index):
         sumxy += xi * yi
 
     return sumxy / (math.sqrt(sumxx * sumyy) + 1e-6)
-    #return 1 if sumxx + sumyy == 0 else sumxy / (math.sqrt(sumxx * sumyy) + 1e-6)
 
 def ExtractSample(x, index):
     v = []

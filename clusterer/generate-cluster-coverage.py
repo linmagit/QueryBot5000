@@ -17,8 +17,6 @@ import matplotlib as mpl
 
 from sortedcontainers import SortedDict
 
-DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S" # Strip milliseconds ".%f"
-
 DATA_DICT = {
         #'admission': "../synthetic_workload/noise/",
         'admission': "../clustering/timeseries/admissions/admission-combined-results-full/",
@@ -26,12 +24,23 @@ DATA_DICT = {
         'tiramisu': 'tiramisu-combined-results/',
         }
 
+# Only looks at the csv files for the first 10 templates for testing purpose
 TESTING = False
 
+# The number of the largest clusters to consider for coverage evaluation and
+# forecasting
 MAX_CLUSTER_NUM = 3
 
+# If it's the full trace used for kernel regression, always aggregate the data
+# into 10 minutes intervals
 FULL = True
 
+# If it's the noisy data evaluation, use a smaller time gap to calculate the
+# total volume of the largest clusters. In the future we should automatically
+# adjust this to the point where the worklaod has shifted after we detect that a
+# shift happened (i.e., the majority of the workload comes from unseen queries).
+# And of course a long horizon prediction is hard to work if the shift only
+# happened for a short period.
 NOISE = False
 
 if FULL:
@@ -43,6 +52,9 @@ if NOISE:
     LAST_TOTAL_TIME_GAP = 1200 # seconds
 else:
     LAST_TOTAL_TIME_GAP = 86400 # seconds
+
+DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S" # Strip milliseconds ".%f"
+
 
 def LoadData(input_path):
     total_queries = dict()
@@ -116,8 +128,10 @@ def GenerateData(min_date, max_date, data, data_accu, templates, assignment_dict
 
     last_date = min_date
     if FULL:
+        # Normal full evaluation
         assignment_dict = assignment_dict[0:]
-        #assignment_dict = assignment_dict[365:]
+        # used for the micro evaluation only for the spike patterns
+        #assignment_dict = assignment_dict[365:] 
     for current_date, assignments in assignment_dict:
         cluster_totals = dict()
         date_total = 0
