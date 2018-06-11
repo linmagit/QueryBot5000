@@ -24,8 +24,7 @@ STATEMENTS = ['select', 'SELECT', 'INSERT', 'insert', 'UPDATE', 'update', 'delet
 PROJECTS = {
     "tiramisu": {
         "name": "tiramisu",
-        "files": "dbp*postgresql-*.anonymized.gz",
-        #"files": os.path.join("dbp*", "postgresql-*.anonymized.gz"),
+        "files": "dbp*postgresql-*.anonymized.sample.gz",
         "mysql": False,
         "query_index": 3,
         "time_stamp_format": "%Y-%m-%d %H:%M:%S"

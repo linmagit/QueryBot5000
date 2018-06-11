@@ -118,7 +118,7 @@ def Combine(input_dir, output_dir):
 
     print(min_timestamp)
     print(max_timestamp)
-    with open('admission_templates.txt', 'w') as template_file:
+    with open('templates.txt', 'w') as template_file:
         [ template_file.write(t + "\n") for t in sorted(templated_workload.keys()) ]
 
     MakeCSVFiles(templated_workload, min_timestamp, max_timestamp, output_dir)

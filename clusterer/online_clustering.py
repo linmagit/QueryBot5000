@@ -36,7 +36,7 @@ USE_KNN = True
 KNN_ALG = "kd_tree"
 
 
-OUTPUT_DIR = 'online-clustering-admission-noise/'
+OUTPUT_DIR = 'online-clustering-results/'
 STATEMENTS = ['select', 'SELECT', 'INSERT', 'insert', 'UPDATE', 'update', 'delete', 'DELETE']
 # "2016-10-31","17:50:21.344030"
 DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S" # Strip milliseconds ".%f"
@@ -301,7 +301,7 @@ def AdjustCluster(min_date, current_date, next_date, data, last_ass, next_cluste
 
 def OnlineClustering(min_date, max_date, data, total_queries, rho):
     print(rho)
-    cluster_gap = 60
+    cluster_gap = 1440
 
     n = (max_date - min_date).seconds // 60 + (max_date - min_date).days * 1440 + 1 
     num_gaps = n // cluster_gap
