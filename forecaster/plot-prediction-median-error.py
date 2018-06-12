@@ -319,7 +319,7 @@ def PlotPaperGraph(data_dict, name, xlabel, ylabel, color):
 
         data_mixture = []
         for i in range(res_hat[1].shape[0]):
-            if abs(res_psrnn[i] - res_hat[1][i]) / res_psrnn[i] > 1.5:
+            if res_hat[1][i] > 7 and abs(res_hat[1][i] - res_psrnn[i]) > 1:
                 data_mixture.append(res_hat[1][i])
             else:
                 data_mixture.append(res_psrnn[i])

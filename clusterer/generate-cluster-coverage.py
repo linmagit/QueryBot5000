@@ -21,7 +21,7 @@ DATA_DICT = {
         #'admission': "../synthetic_workload/noise/",
         'admission': "../clustering/timeseries/admissions/admission-combined-results-full/",
         'oli': "oli-combined-results/",
-        'tiramisu': 'tiramisu-combined-results/',
+        'tiramisu': 'tiramisu-combined-csv/',
         }
 
 # Only looks at the csv files for the first 10 templates for testing purpose
