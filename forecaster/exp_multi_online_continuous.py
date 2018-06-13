@@ -98,7 +98,7 @@ class Args:
         self.bptt = {1: 240, 5:200, 10:120, 20:90, 30:60, 60:48, 120:30}
         self.dropout = 0.2
         self.tied = False
-        self.cuda = True
+        self.cuda = False
         self.log_interval = 50
         self.save = 'model.pt'
         
