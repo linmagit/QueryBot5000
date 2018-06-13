@@ -5,7 +5,7 @@ in the future based on historical data. This is the source code for our
 
 ## Run forecasting on a sample of BusTracker workload:
     ./run.sh
-The forecasting results with different models for each cluster are in the _prediction-results_ folder. All the query templates of the workload can be found at _templates.txt_.
+We provide an example of the workload forecasting for a sample subset of **BusTracker** workload. The prediction specified in the script is on 1 hour interval and 3 day horizon. The predicted arrival rates with different models for each cluster are in the _prediction-results_ folder. All the query templates of the workload can be found at _templates.txt_.
 
 The default experimental setting is to run under CPU. If you have a GPU, you can change [this parameter](https://github.com/malin1993ml/QueryBot5000/blob/master/forecaster/exp_multi_online_continuous.py#L101) to _True_ to enable GPU training.
 
