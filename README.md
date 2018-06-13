@@ -3,6 +3,12 @@
 in the future based on historical data. This is the source code for our 
 [SIGMOD paper](http://www.cs.cmu.edu/~malin199/publications/2018.forecasting.sigmod.pdf): **_Query-based Workload Forecasting for Self-Driving Database Management Systems_**.
 
+## Run forecasting on a sample of BusTracker workload:
+    ./run.sh
+The forecasting results with different models for each cluster are in the _prediction-results_ folder. All the query templates of the workload can be found at _templates.txt_.
+
+The default experimental setting is to run under CPU. If you have a GPU, you can change [this parameter](https://github.com/malin1993ml/QueryBot5000/blob/master/forecaster/exp_multi_online_continuous.py#L101) to _True_ to enable GPU training.
+
 ## Framework Pipeline:
 
 ### Anonymization
@@ -35,6 +41,12 @@ This simulator populates a synthetic database with a given schema file, removes 
 
     cd workload-simulator
     ./workload-simulator.py --help
+    
+## Inquiry about Data
+Due to legal and privacy constraints, unfortunately we cannot publish the full datasets that we used in the experiments for the publication (especially for the two student-related **Admissions** and **MOOC** workloads). To the best of our effort, we managed to publish a subset (2% random sampling) of the **BusTracker** workload trace and the schema file here:
+http://www.cs.cmu.edu/~malin199/data/tiramisu-sample/
+
+We use [this script](https://github.com/malin1993ml/QueryBot5000/blob/master/anonymizer/run-sampler.sh) to generate the sample subset of the original workload trace.
     
 ## NOTE
 This repo does not have an end-to-end running framework. We build different components separately and pass the results through a workload simulator that connects to MySQL/PostgreSQL for experimental purposes. We are integrating the full framework into [Peloton](http://pelotondb.io/) Self-Driving DBMS. Please check out our [source code](https://github.com/cmu-db/peloton/tree/master/src/include/brain) there for more reference.
