@@ -9,6 +9,15 @@ We provide an example of the workload forecasting for a sample subset of **BusTr
 
 The default experimental setting is to run under CPU. If you have a GPU, you can change [this parameter](https://github.com/malin1993ml/QueryBot5000/blob/master/forecaster/exp_multi_online_continuous.py#L101) to _True_ to enable GPU training.
 
+### Dependencies
+python>=3.5
+scikit-learn>=0.18.1
+sortedcontainers>=1.5.7
+statsmodels>=0.8.0
+scipy>=0.19.0
+numpy>=1.14.2
+pytorch>=0.2.0_1 (you need to install the GPU version if you want to use GPU)
+
 ## Framework Pipeline:
 
 ### Anonymization
