@@ -17,7 +17,6 @@ import scipy.io
 import shutil
 import pickle
 
-import pandas as pd
 import statsmodels.api as sm
 
 from datetime import datetime, timedelta
