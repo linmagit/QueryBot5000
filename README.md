@@ -16,6 +16,7 @@ sortedcontainers>=1.5.7
 statsmodels>=0.8.0
 scipy>=0.19.0
 numpy>=1.14.2
+matplotlib>=2.0.2
 pytorch>=0.2.0_1 (you need to install the GPU version if you want to use GPU)
 
 ## Framework Pipeline:
