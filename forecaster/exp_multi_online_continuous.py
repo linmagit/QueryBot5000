@@ -350,8 +350,8 @@ def train_pass(args, method, model, data, criterion, lr, bptt, clip, log_interva
         loss = criterion(output, targets)
         if args.cuda:
             loss = loss.cpu()
-        total_loss += loss.data.numpy()[0]
-        losses.append(loss.data.numpy()[0])
+        total_loss += loss.data.numpy()
+        losses.append(loss.data.numpy())
 
         # Perform Gradient Descent
         loss.backward()
@@ -477,7 +477,7 @@ def evaluate_pass(args, method, model, data, criterion, bptt):
             targets = targets.cpu()
             output = output.cpu()
 
-        total_loss += loss.data.numpy()[0]
+        total_loss += loss.data.numpy()
         
         if y is None:
             y = targets.data.numpy()

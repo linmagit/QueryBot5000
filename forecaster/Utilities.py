@@ -18,10 +18,10 @@ def flat_prod(X,Y):
 
 def repackage_hidden(h):
     """Wraps hidden states in new Variables, to detach them from their history."""
-    if type(h) == Variable:
-        return Variable(h.data)
-    else:
+    if isinstance(h, tuple) or isinstance(h, list):
         return tuple(repackage_hidden(v) for v in h)
+    else:
+        return h.detach()
 
 def get_batch(source, i, bptt, evaluation=False):
     seq_len = min(bptt, source.shape[0] - 1 - i)
