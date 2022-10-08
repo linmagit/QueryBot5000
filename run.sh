@@ -1,8 +1,11 @@
 #!/bin/bash
 
 # Copy and decompress the sample data file
-curl -L "https://drive.google.com/uc?export=download&id=13Q6UpXPaSqWQb-3c5UbXVuwsgjTRhZKh" -o tiramisu-sample.tar.gz
-tar -xvzf tiramisu-sample.tar.gz
+fileid="1imVPNXk8mGU0v9OOhdp0d9wFDuYqARwZ"
+filename="tiramisu-sample.tar.gz"
+html=`curl -c ./cookie -s -L "https://drive.google.com/uc?export=download&id=${fileid}"`
+curl -Lb ./cookie "https://drive.google.com/uc?export=download&`echo ${html}|grep -Po '(confirm=[a-zA-Z0-9\-_]+)'`&id=${fileid}" -o ${filename}
+tar -xvzf ${filename}
 
 # Generate and combine query templates
 ./pre-processor/templatizer.py tiramisu --dir tiramisu-sample/ --output templates
