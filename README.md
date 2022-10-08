@@ -53,8 +53,7 @@ This simulator populates a synthetic database with a given schema file, removes 
     ./workload-simulator.py --help
     
 ## Inquiry about Data
-Due to legal and privacy constraints, unfortunately we cannot publish the full datasets that we used in the experiments for the publication (especially for the two student-related **Admissions** and **MOOC** workloads). To the best of our effort, we managed to publish a subset (2% random sampling) of the **BusTracker** workload trace and the schema file here:
-http://www.cs.cmu.edu/~malin199/data/tiramisu-sample/
+Due to legal and privacy constraints, unfortunately we cannot publish the full datasets that we used in the experiments for the publication (especially for the two student-related **Admissions** and **MOOC** workloads). To the best of our effort, we managed to publish a subset (2% random sampling) of the **BusTracker** [workload trace](https://drive.google.com/file/d/1imVPNXk8mGU0v9OOhdp0d9wFDuYqARwZ/view?usp=sharing) and the [schema file](https://drive.google.com/file/d/1d4z3SAwIOmv_PJTlsUfPCNHxZu2r-g_O/view?usp=sharing).
 
 We use [this script](https://github.com/malin1993ml/QueryBot5000/blob/master/anonymizer/run-sampler.sh) to generate the sample subset of the original workload trace.
     
