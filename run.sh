@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Copy and decompress the sample data file
-curl -O http://www.cs.cmu.edu/~malin199/data/tiramisu-sample/tiramisu-sample.tar.gz
+curl -L "https://drive.google.com/uc?export=download&id=13Q6UpXPaSqWQb-3c5UbXVuwsgjTRhZKh" -o tiramisu-sample.tar.gz
 tar -xvzf tiramisu-sample.tar.gz
 
 # Generate and combine query templates
